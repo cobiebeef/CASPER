@@ -17,23 +17,23 @@ BatteryWrapper Battery;
 SensorWrapper Sensor;
 
 void GPS_ISR(struct tc_module *const module_inst){ //Interrupt service routine is called a thousand times per second to tend to the incomming GPS characters
-  GPS.read();//reads in a new char from GPS, if there is one. This needs to be called very often, around 1khz (a thousand times per second)
+    GPS.read();//reads in a new char from GPS, if there is one. This needs to be called very often, around 1khz (a thousand times per second)
 }
 
 SAMDtimer GPSTimer = SAMDtimer(4, GPS_ISR, 1e3);//create the ISR with the SAMDTimer library that is called every .001 seconds (a thousand times per second) (1e3 microseconds) (1e2 was tested but gave bad data)
 
 void setup(){
-  Serial.begin(9600);//serial port to debug to computer
-  Radio.initialize();//initialize the radio object
-  Audio.initialize();//initialize the Audio object
-  GPS.initialize();//initialize the GPS object
+    Serial.begin(9600);//serial port to debug to computer
+    Radio.initialize();//initialize the radio object
+    Audio.initialize();//initialize the Audio object
+    GPS.initialize();//initialize the GPS object
 }
 
 void loop(){
-  String commandFromRadio=Radio.receive();//get response from radio
-  if(commandFromRadio!="No Data Received"){//if there is a response,
-    parse(commandFromRadio);//parse it and send a response
-  }
+    String commandFromRadio=Radio.receive();//get response from radio
+    if(commandFromRadio!="No Data Received"){//if there is a response,
+        parse(commandFromRadio);//parse it and send a response
+    }
 }
 
 void parse(String command) {

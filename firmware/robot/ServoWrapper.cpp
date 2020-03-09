@@ -6,8 +6,8 @@
 ServoWrapper::ServoWrapper(){}
 
 void ServoWrapper::initialize(){
-  PCA9685.begin();
-  PCA9685.setPWMFreq(60);  //update servos at 60hz
+    PCA9685.begin();
+    PCA9685.setPWMFreq(60);  //update servos at 60hz
 }
 
 String ServoWrapper::clearErrors(){return "Not implemented yet";}
